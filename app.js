@@ -1,25 +1,17 @@
 import {getWeather} from './weather.js'
 import {ICON_MAP} from "./iconMap.js"
 
-navigator.geolocation.getCurrentPosition(positionSuccess , positionError)
-
-async function positionSuccess({coords}) {
-    await getWeather(coords.latitude , coords.longitude , Intl.DateTimeFormat().resolvedOptions().timeZone)
-    .then((parsedData) => {
-        const {current, daily, hourly} = parsedData
-        renderCurrentWeather(current)
-        renderDailyWeather(daily)
-        renderHourlyWeather(hourly)
-        document.body.classList.remove("blurred")
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-
-}
-function positionError() {
-    alert("There was an error getting your location. Please allow us to use your location and refresh the page.")
-}
+getWeather(28.10988 , 30.7503, Intl.DateTimeFormat().resolvedOptions().timeZone)
+.then((parsedData) => {
+    const {current, daily, hourly} = parsedData
+    renderCurrentWeather(current)
+    renderDailyWeather(daily)
+    renderHourlyWeather(hourly)
+    document.body.classList.remove("blurred")
+})
+.catch(error => {
+    console.error('Error:', error);
+});
 
 
 function setValue(selector, value, { parent = document } = {}) {

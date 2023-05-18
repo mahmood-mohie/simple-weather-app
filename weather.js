@@ -1,13 +1,15 @@
-export async function getWeather(lat ,long ,timezone,) {
-    const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,windspeed_10m_max&current_weather=true&precipitation_unit=inch&timeformat=unixtime&timezone=${timezone}`)
-    const data = await res.json();
-    console.log(data)
-    return {
-    current : parseCurrentWeather(data) ,
-    daily : parseDailyWeather(data) ,
-    hourly : parseHourlyWeather(data) ,
-    }
-        
+export function getWeather(lat ,long ,timezone,) {
+    return fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode,windspeed_10m&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,precipitation_sum,windspeed_10m_max&current_weather=true&precipitation_unit=inch&timeformat=unixtime&timezone=${timezone}`)
+        .then(res => {
+            return res.json()
+        })
+        .then((data) => {
+            return {
+                current : parseCurrentWeather(data) ,
+                daily : parseDailyWeather(data) ,
+                hourly : parseHourlyWeather(data) ,
+            }
+        })
 }
 
 function parseCurrentWeather ({current_weather , daily}) {
