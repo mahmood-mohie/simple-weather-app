@@ -3,8 +3,8 @@ import {ICON_MAP} from "./iconMap.js"
 
 navigator.geolocation.getCurrentPosition(positionSuccess , positionError)
 
-function positionSuccess({coords}) {
-    getWeather(coords.latitude , coords.longitude , Intl.DateTimeFormat().resolvedOptions().timeZone)
+async function positionSuccess({coords}) {
+    await getWeather(coords.latitude , coords.longitude , Intl.DateTimeFormat().resolvedOptions().timeZone)
     .then((parsedData) => {
         const {current, daily, hourly} = parsedData
         renderCurrentWeather(current)
