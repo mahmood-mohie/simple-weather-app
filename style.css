@@ -6,8 +6,9 @@
 
 body {
   margin: 0;
-  background-color: hsl(200, 100%, 85%);
-  color: hsl(200, 100%, 10%);
+  background: url(img/endless-constellation.svg);
+  background-size: contain;
+  color: #fff;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -28,7 +29,14 @@ body {
   justify-content: center;
   margin: 0.5rem;
   padding: 0.5rem;
-  border-right: 2px solid hsl(200, 100%, 10%);
+  border-right: 2px solid #9c27b0;;
+}
+.me {
+  font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+    color: #9c27b0;
+
 }
 
 .weather-icon {
@@ -66,7 +74,7 @@ body {
   text-transform: uppercase;
   font-weight: bold;
   font-size: 0.6rem;
-  color: hsl(200, 100%, 20%);
+  color: #e91e63;
 }
 
 .value-sub-info {
@@ -86,14 +94,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid hsl(200, 100%, 10%);
+  border: 1px solid #9c27b0;
   border-radius: 0.25rem;
   padding: 0.25rem;
 }
 
 .day-card-day {
   font-size: 0.75rem;
-  color: hsl(200, 100%, 20%);
+  color: #9c27b0;
   margin-top: 0.5rem;
 }
 
@@ -104,16 +112,17 @@ body {
 }
 
 .hour-row {
-  background-color: hsl(200, 60%, 75%);
+  background-color: transparent;
 }
 
 .hour-row:nth-child(2n) {
-  background-color: hsl(200, 60%, 70%);
+  background-color: hsl(291deg 64% 42% / 21%);
 }
 
 .hour-row > td {
   padding: 0.25rem 0.5rem;
 }
+
 
 /*  small screens (mobile devices) */
 @media (max-width: 767px) {
@@ -139,6 +148,9 @@ body {
   }
   .info-group {
     font-size : 0.9rem 
+  }
+  .me {
+    font-size: 1.5rem;
   }
   
 }
